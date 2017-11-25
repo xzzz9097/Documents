@@ -4,10 +4,51 @@
 \usepackage[version=3]{mhchem}
 \usepackage{textgreek}
 \usepackage{gensymb}
+\usepackage{chemfig}
 
 \usepackage[utf8]{inputenc}
 
+\newcommand*\derivesubmol[4]{%
+    \saveexpandmode\saveexploremode\expandarg\exploregroups
+    \csname @\ifcat\relax\noexpand#2first\else second\fi oftwo\endcsname
+        {\expandafter\StrSubstitute\@car#2\@nil}
+        {\expandafter\StrSubstitute\csname CF@@#2\endcsname}
+    {\@empty#3}{\@empty#4}[\temp@]%
+    \csname @\ifcat\relax\noexpand#1first\else second\fi oftwo\endcsname
+        {\expandafter\let\@car#1\@nil}
+        {\expandafter\let\csname CF@@#1\endcsname}\temp@
+    \restoreexpandmode\restoreexploremode
+}
+
+\setcrambond{2pt}{}{}
+
+\definesubmol{adenina}{N*5([::-18]-*6(-N=-N=(-NH_2)-)=-N=-)}
+
+\definesubmol{s1}{-[2]!{adenina}}
+\definesubmol{s2}{-[6,.6]O-PO_3^{2-}}
+\definesubmol{s3}{-[6,.6]OH}
+
+\definesubmol{ribosio}{%
+    -[::-90,2]%
+        (%
+            -[::115,1.176]O%
+            -[::-50,1.176]%
+        )%
+    <[::45,0.8]%
+        (%
+          (!{s3})
+          -[::45,,,,line width=2pt,shorten <=-.5pt,shorten >=-.5pt]%
+              (!{s2})%
+          >[::45,0.8]%
+              (!{s1})%
+         )%
+}
+
+\def \CoA {\tiny\chemfig{HS-CH_2-CH_2-NH-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH3)(-[:270]CH3)-CH_2-O-PO_2^{-}-O-PO_2^{-}-O-CH_2!{ribosio}}}
+
 \date{}
+
+\setatomsep{15pt}
 
 \title{%
   Vitamina B5 \\
@@ -16,5 +57,13 @@
 \begin{document}
 
 \maketitle
+
+\section{Introduzione}
+La quinta vitamina del gruppo B, corrispondente all'acido pantonenico, ricopre numerose funzioni biologiche di fondamentale importanza in tutti gli esseri viventi.\\
+Essa espleta il suo ruolo principale in quanto componente essenziale del \textbf{coenzima A}, molecola centrale del metabolismo.\\
+Rientra inoltre nella \textbf{proteina di trasporto di acili (ACP)}, componente importante nell
+
+\section{Coenzima A}
+\center\CoA
 
 \end{document}
