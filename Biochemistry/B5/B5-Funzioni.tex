@@ -5,6 +5,13 @@
 \usepackage{textgreek}
 \usepackage{gensymb}
 \usepackage{chemfig}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\tikzstyle{block} = [rectangle, draw, text centered, minimum height=1.5em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{reverseline} = [draw, latex'-]
+\tikzstyle{thickline} = [draw, -latex', line width = 0.4mm]
 
 \usepackage[utf8]{inputenc}
 
@@ -89,7 +96,33 @@ Il coenzima A è richiesto per due reazione del ciclo della \textbf{$\beta$-ossi
 \subsubsection{Anabolismo}
 CoA partecipa alla \textbf{via metabolica dell'acido mevalonico}, che inizia con la condensazione di due molecole di acetil-CoA formando acetoacetil-CoA. Esso reagisce poi con una terza unità di acetil-CoA, dando luogo all'\textbf{acido mevalonico}.\\
 L'acido mevalonico è il precursore degli \textbf{isoprenoidi}, e dunque anche degli \textbf{steroidi} attraverso lo squalene.
-È quindi chiara l'importanza del coenzima per la sintesi di colesterolo, ormoni steroidei e altri lipidi, e per la modificazione di proteine mediante isoprenilazione.
+È quindi chiara l'importanza del coenzima per la sintesi di colesterolo, ormoni steroidei e altri lipidi, e per la modificazione di proteine mediante isoprenilazione. \\
+La produzione di acido mevalonico è controllata mediante un meccanismo di \textbf{feedback negativo}: un eccesso di colesterolo all'interno della cellula, infatti, oltre a ridurre l'espressione del recettore per LDL, è in grado di inibire due enzimi impiegati nella via, \textbf{HMG-CoA sintasi} e \textbf{HMG-CoA reduttasi}.
+
+\begin{center}
+\begin{tikzpicture}[node distance = 1.3cm, auto]
+
+    \node (1) {acetil-CoA + acetoacetil-CoA};
+    \node (2) [below of=1]{HMG-CoA sintasi};
+    \node (3) [block, below of=2]{HMG-CoA};
+    \node (4) [below of=3]{HMG-CoA reduttasi};
+    \node (5) [block, below of=4]{acido mevalonico};
+    \node (6) [block, below of=5]{colesterolo};
+    \node (7) [below of=6]{LDL plasmatiche};
+    \node (8) [right of=6, node distance = 5cm]{recettore LDL};
+
+    \path [line] (1) -- (2);
+    \path [line] (2) -- (3);
+    \path [line] (3) -- (4);
+    \path [line] (4) -- (5);
+    \path [dashed, thickline] (5) -- (6);
+    \path [reverseline] (6) -- (7);
+    \path [dashed, line] (6) --++ (-3,-0) |- (4) node [midway, left] {$\ominus$};
+    \path [dashed, line] (6) --++ (-3,0) |- (2);
+    \path [dashed, line] (6) -- (8) node [very near end]{$\ominus$};
+
+\end{tikzpicture}
+\end{center}
 
 \subsection{Metabolismo degli amminoacidi}
 CoA rientra nel processamento della \textbf{leucina}, in quanto il suo chetoacido, ottenuto per deaminazione, reagisce con il coenzima formando acido acetoacetico e acetil-CoA.
