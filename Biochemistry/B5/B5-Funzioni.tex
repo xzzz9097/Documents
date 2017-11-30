@@ -16,6 +16,23 @@
 
 \usepackage[utf8]{inputenc}
 
+\makeatletter
+\definearrow5{-n>}{
+	\CF@arrow@shift@nodes{#3}%
+	\expandafter\draw\expandafter[\CF@arrow@current@style,-CF@full](\CF@arrow@start@node)--(\CF@arrow@end@node)node[pos=.2](narrow@arctangent@i){} node[pos=.5](narrow@arctangent@ii){};%
+	\edef\CF@tmp@str{[\ifx\@empty#1\@empty draw=none,\fi-CF@full]}%
+	\expandafter\draw\CF@tmp@str (narrow@arctangent@i)%
+		arc[radius=\CF@compound@sep*\CF@current@arrow@length*\ifx\@empty#4\@empty0.333\else#4\fi,start angle=\CF@arrow@current@angle+90,%
+		delta angle=-\ifx\@empty#5\@empty60\else#5\fi]node(narrow@start){};
+	\edef\CF@tmp@str{[\ifx\@empty#2\@empty draw=none,\fi-CF@full]}%
+	\expandafter\draw\CF@tmp@str (narrow@arctangent@ii)%
+		arc[radius=\CF@compound@sep*\CF@current@arrow@length*\ifx\@empty#4\@empty0.333\else#4\fi,start angle=\CF@arrow@current@angle+90,%
+		delta angle=-\ifx\@empty#5\@empty60\else#5\fi]node(narrow@end){};
+	\edef\CF@tmp@str{\if\string-\expandafter\@car\detokenize{#4.}\@nil+\else-\fi}%
+	\CF@arrow@display@label{#1}{0}\CF@tmp@str{narrow@start}{#2}{1}\CF@tmp@str{narrow@end}%
+}
+\makeatother
+
 \newcommand*\derivesubmol[4]{%
     \saveexpandmode\saveexploremode\expandarg\exploregroups
     \csname @\ifcat\relax\noexpand#2first\else second\fi oftwo\endcsname
@@ -36,7 +53,7 @@
 \definesubmol{s2}{-[6,.6]O-PO_3^{2-}}
 \definesubmol{s3}{-[6,.6]OH}
 
-\definesubmol{ribosio}{%
+\definesubmol{ribosiofosfatoadenina}{%
     -[::-90,2]%
         (%
             -[::115,1.176]O%
@@ -52,7 +69,22 @@
          )%
 }
 
-\def \CoA {\tiny\chemfig{HS-CH_2-CH_2-NH-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-O-PO_2^{-}-O-PO_2^{-}-O-CH_2!{ribosio}}}
+\definesubmol{ribosioadenina}{%
+    -[::-90,2]%
+        (%
+            -[::115,1.176]O%
+            -[::-50,1.176]%
+        )%
+    <[::45,0.8]%
+        (%
+          (!{s3})
+          -[::45,,,,line width=2pt,shorten <=-.5pt,shorten >=-.5pt]%
+          >[::45,0.8]%
+              (!{s1})%
+         )%
+}
+
+\def \CoA {\tiny\chemfig{HS-CH_2-CH_2-NH-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-O-PO_2^{-}-O-PO_2^{-}-O-CH_2!{ribosiofosfatoadenina}}}
 
 \def \ACP {\tiny\chemfig{HS-CH_2-CH_2-NH-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-O-PO_2^{-}-O-PO_2^{-}-O-CH_2-CH(-[:90]C(-[:90]...)=O)(-[:270]NH(-[:270]...))}}
 
@@ -135,17 +167,18 @@ AMP \+
 PP\textsubscript{i}
 \schemestop
 \end{center}
-La coniugazione di un gruppo acilico a CoA richiede consumo di energia, necessaria ad \textit{attivare} l'acido grasso per renderlo disponibile all'attacco del coenzima. In particolare abbiamo:
+La coniugazione di un gruppo acilico a CoA richiede consumo di energia, necessaria ad \textit{attivare} l'acido grasso per renderlo disponibile all'attacco nucleofilo sul coenzima.
 
 \begin{center}
-\setatomsep{30pt}
-\footnotesize
+\setatomsep{20pt}
+\tiny
 \schemestart
-ATP \+
+\chemname{\chemfig{PO_3^{2-}-O-PO_2^{-}-O-PO_2^{-}-O-PO_2^{-}-O-[:0, 1.5]{Ribosio}-[:0, 2]{Adenina}}}{ATP} \+
 \chemname{\chemfig{R-C(=[:90]O)-O^{-}}}{Gruppo acile}
-\arrow[-90] \chemname{\chemfig{R-C(=[:90]O)-O-AMP}}{Acil-adenilato}
-\arrow[-90]
-AMP \+
+\arrow{-U>[][*{0}\schemestart PP\textsubscript{i}\arrow 2P\textsubscript{i}\schemestop]}[-90]
+\chemname{\chemfig{R-C(=[:90]O)-O-PO_2^{-}-[:0, 1.5]{Ribosio}-[:0, 2]{Adenina}}}{Acil-adenilato}
+\arrow{-U>[*{0}CoA-SH]}[-90]
+\chemname{\chemfig{PO_3^{2-}-O-[:0, 1.5]{Ribosio}-[:0, 2]{Adenina}}}{AMP} \+
 \chemname{\chemfig{R-C(=[:90]O)-S-CoA}}{Acil-CoA}
 \schemestop
 \end{center}
