@@ -111,11 +111,13 @@ La \textbf{coenzima A idrolasi} catalizza l'idrolisi di CoA a 3'-5'-ADP e 4'-fos
     \node (5) [block, below of=4]{4'-defosfo-CoA};
     \node (6) [block, below of=5]{Coenzima A};
 
-    \path [line] (1) -- (2) node [midway, left, xshift = -2mm] {\textit{PanK}};
-    \path [line] (2) -- (3) node [midway, left, xshift = -2mm] {\textit{4'-fosfopantotenilcistina sintetasi}};
-    \path [line] (3) -- (4) node [midway, left, xshift = -2mm] {\textit{4'-fosfopantotenilcistina decarbossilasi}};
-    \path [line] (4) -- (5) node [midway, left, xshift = -2mm] {\textit{Defosfo-CoA pirofosforilasi}};
-    \path [line] (5) -- (6) node [midway, left, xshift = -2mm] {\textit{Defosfo-CoA chinasi}};
+    \path [line] (1) -- (2) node (7) [midway, left, xshift = -2mm] {\textit{PanK}};
+    \path [line] (2) -- (3) node [midway, left, xshift = -2mm, align = right, text width = 5cm] {\textit{4'-fosfopantotenilcistina sintetasi}};
+    \path [line] (3) -- (4) node [midway, left, xshift = -2mm, align = right, text width = 5cm] {\textit{4'-fosfopantotenilcistina decarbossilasi}};
+    \path [line] (4) -- (5) node [midway, left, xshift = -2mm, align = right, text width = 5cm] {\textit{Defosfo-CoA pirofosforilasi}};
+    \path [line] (5) -- (6) node [midway, left, xshift = -2mm, align = right, text width = 5cm] {\textit{Defosfo-CoA chinasi}};
+    \path [dashed, line] (6) --++ (-6,-0) |- (7) node [midway, left] {$\ominus$};
+    \path [line] (6) --++ (3,0) |- (4) node[midway, right]{\textit{CoA idrolasi}}
 
 \end{tikzpicture}
 \end{center}
