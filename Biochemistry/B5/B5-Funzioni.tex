@@ -101,6 +101,24 @@ La fosforilazione dell'acido pantotenico è un fondamentale punto di controllo d
 Per la compartecipazione di questi fattori è stato ad esempio verificato che digiuno e diabete di tipo I (da ipoinsulinemia) incrementano l'attività di PanK e dunque la quantità di CoA. Al contrario, eccesso di glucosio e di acidi grassi all'interno della cellula riducono l'attività di PanK, per sottrazione di carnitina e maggiori concentrazioni di acetil-CoA.\\
 Le successive fasi della sintesi del coenzima sono condotte su un complesso proteico dotato di vari siti catalitici e sono illustrate nello schema sottostante.\\
 La \textbf{coenzima A idrolasi} catalizza l'idrolisi di CoA a 3'-5'-ADP e 4'-fosfopanteteina; quest'ultima può essere riutilizzata per la sintesi di nuovo coenzima. Si parla perciò di \textbf{ciclo del CoA/4'-fosfopanteteina}. Ogni esecuzione del ciclo richiede due molecole di ATP e ne produce una di ADP, una di PP\textsubscript{i} e una di 3',5'-ADP.
+\begin{center}
+\begin{tikzpicture}[node distance = 2cm, trim left = (1), trim right = (1)]
+
+    \node (1) [block]{Acido pantotenico};
+    \node (2) [block, below of=1]{Acido 4'-fosfopantotenico};
+    \node (3) [block, below of=2]{4'-fosfopantotenilcisteina};
+    \node (4) [block, below of=3]{4'-fosfopantoteina};
+    \node (5) [block, below of=4]{4'-defosfo-CoA};
+    \node (6) [block, below of=5]{Coenzima A};
+
+    \path [line] (1) -- (2) node [midway, left, xshift = -2mm] {\textit{PanK}};
+    \path [line] (2) -- (3) node [midway, left, xshift = -2mm] {\textit{4'-fosfopantotenilcistina sintetasi}};
+    \path [line] (3) -- (4) node [midway, left, xshift = -2mm] {\textit{4'-fosfopantotenilcistina decarbossilasi}};
+    \path [line] (4) -- (5) node [midway, left, xshift = -2mm] {\textit{Defosfo-CoA pirofosforilasi}};
+    \path [line] (5) -- (6) node [midway, left, xshift = -2mm] {\textit{Defosfo-CoA chinasi}};
+
+\end{tikzpicture}
+\end{center}
 
 \subsection{Metabolismo dei carboidrati}
 \subsubsection{Anabolismo}
