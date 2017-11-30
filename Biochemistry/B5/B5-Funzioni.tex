@@ -127,10 +127,26 @@ La \textbf{coenzima A idrolasi} catalizza l'idrolisi di CoA a 3'-5'-ADP e 4'-fos
 \setatomsep{30pt}
 \footnotesize
 \schemestart
-\chemfig{H^+} \+ \chemname{\chemfig{R-C(=[:90]O)-O^{-}}}{Gruppo acile} \+
+ATP \+
+\chemname{\chemfig{R-C(=[:90]O)-O^{-}}}{Gruppo acile} \+
 \chemname{\chemfig{CoA-SH}}{Tiolo}
-\arrow(.mid east--.mid west){<=>} \chemname{\chemfig{CH_3-C(=[:90]O)-S-CoA}}{Tioestere} \+ 
-\chemfig{H_2O}
+\arrow(.mid east--.mid west){<=>} \chemname{\chemfig{CH_3-C(=[:90]O)-S-CoA}}{Tioestere} \+
+AMP \+
+PP\textsubscript{i}
+\schemestop
+\end{center}
+La coniugazione di un gruppo acilico a CoA richiede consumo di energia, necessaria ad \textit{attivare} l'acido grasso per renderlo disponibile all'attacco del coenzima. In particolare abbiamo:
+
+\begin{center}
+\setatomsep{30pt}
+\footnotesize
+\schemestart
+ATP \+
+\chemname{\chemfig{R-C(=[:90]O)-O^{-}}}{Gruppo acile}
+\arrow[-90] \chemname{\chemfig{R-C(=[:90]O)-O-AMP}}{Acil-adenilato}
+\arrow[-90]
+AMP \+
+\chemname{\chemfig{R-C(=[:90]O)-S-CoA}}{Acil-CoA}
 \schemestop
 \end{center}
 
