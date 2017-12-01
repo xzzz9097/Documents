@@ -7,10 +7,11 @@
 \usepackage{chemfig}
 \usepackage{tikz}
 \usepackage{fullpage}
-\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{shapes,arrows, positioning,calc}
 
 \tikzstyle{block} = [rectangle, draw, text centered, minimum height=1.5em]
 \tikzstyle{line} = [draw, -latex']
+\tikzstyle{linewithouttip} = [draw, -]
 \tikzstyle{reverseline} = [draw, latex'-]
 \tikzstyle{thickline} = [draw, -latex', line width = 0.4mm]
 
@@ -284,6 +285,35 @@ Acetil-CoA viene carbossilato, in una reazione dipendente da biotina come donato
 Il gruppo acilico di malonil-CoA viene successivamente ceduto all'\textbf{estremità tiolica} di ACP, con formazione di malonil-ACP. Esso reagisce con acetil-ACP, analogamente derivato da acetil-CoA, per formare \textbf{acetoacetil-ACP}.\\
 Questo composto, dopo riduzione e deidratazione a butirril-ACP, reagisce nuovamente con malonil-ACP. Il composto così ottenuto possiede sei atomi di carbonio: quattro dati da butirril-ACP, due da malonil-ACP. Successive reazioni con malonil-ACP permettono l'elongazione del composto di due atomi di carbonio ad ogni ciclo, fino a produrre \textbf{acido palmitico} (16:0).\\
 L'acido palmitico può essere ulteriormente allungato o desaturato, per produrre gli altri acidi grassi sintetizzabili dall'organismo.
+
+\begin{center}
+\begin{tikzpicture}[auto, trim left = (5), trim right = (5)]
+
+    \node (1) [block]{acetil-CoA};
+    \node (2) [block, right = 6cm of 1]{malonil-CoA};
+    \node (3) [block, below = 1cm of 1]{acetil-ACP};
+    \node (4) [block, below = 1cm of 2]{malonil-ACP};
+    \node (5) [block, below = 1cm of {$(3)!0.5!(4)$}]{acetoacetil-ACP};
+    \node (6) [block, below = 1cm of 5]{butirril-ACP};
+    \node (7) [block, below = 1cm of 6]{C6-ACP};
+    \node (8) [block, below = 1cm of 7]{C8-, C10, Cn-ACP};
+    \node (9) [block, below = 1cm of 8]{palmitil-ACP (C16)};
+
+    \path [line] (1) -- (2);
+    \path [line] (2) -- (4);
+    \path [line] (1) -- (3);
+    \path [line] (3) -- (5);
+    \path [line] (4) -- (5);
+    \path [line] (5) -- (6);
+    \path [line] (6) -- (7) node (11) [midway,right];
+    \path [line] (7) -- (8) node (12) [midway, right];
+    \path [dashed, line] (8) -- (9);
+
+    \path [line] (4) --++ (4,-0) |- (11);
+    \path [line] (4) --++ (4,-0) |- (12);
+
+\end{tikzpicture}
+\end{center}
 
 \section{Modificazione delle proteine}
 Oltre agli effetti sul metabolismo finora descritti, un vasto campo di attività del coenzima A, e dunque dell'acido pantotenico, è l'alterazione delle proteine allo scopo di modificarne attività e altre proprietà.\\
