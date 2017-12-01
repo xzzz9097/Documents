@@ -196,7 +196,7 @@ CoA ha un ruolo fondamentale nel ciclo degli acidi tricarbossilici. Esso infatti
 \item \textbf{decarbossilazione del piruvato}, proveniente dal metabolismo glicolitico dei carboidrati, con la formazione di \textbf{acetil-CoA}.\\ Quest'ultimo è il punto di ingresso del ciclo, in quanto reagisce con ossalacetato per formare \textbf{acido citrico}. La reazione è catalizzata dall'enzima piruvato-deidrogenasi (\textbf{PDH}).
 \begin{center}
 \tiny
-\setatomsep{20pt}
+\setatomsep{15pt}
 \setcompoundsep{10em}
 \schemestart
 \chemname{\chemfig{CH_3(-[:90]C(-[:90]C(-[:45]O^{-})(=[:135]O))=O)}}{Piruvato}
@@ -206,7 +206,21 @@ CoA ha un ruolo fondamentale nel ciclo degli acidi tricarbossilici. Esso infatti
 \chemfig{CO_2}
 \schemestop
 \end{center}
+\begin{center}\tiny$\Delta G'\degree = -33.4$ kJ/mol\end{center}
 \item \textbf{decarbossilazione di $\alpha$-chetoglutarato}, con formazione di \textbf{succinil-CoA}.\\ Esso, oltre ad essere convertito in succinato nella successiva tappa del ciclo, può reagire con la glicina per formare acido $\delta$-aminolevulinico, precursore del \textbf{gruppo eme}. Da ciò deriva l'importanza della vitamina B5 per la corretta sintesi di \textbf{emoglobina}, e dunque per il trasporto di ossigeno, e dei \textbf{citocromi}, per quello di elettroni.
+\begin{center}
+\tiny
+\setatomsep{15pt}
+\setcompoundsep{10em}
+\schemestart
+\chemname{\chemfig{COO^{-}(-[:90]C(-[:90]CH_2(-[:90]CH_2-COO^{-}))=O)}}{$\alpha$-chetoglutarato}
+\arrow(.mid east--.mid west){-U>[CoA-SH + NAD\textsuperscript{+}][NADH][][0.2]}[,2]
+\chemname{\chemfig{O(=[:90]C((-S-CoA)(-[:90]CH_2(-[:90]CH_2-COO^{-}))))}}{Succinil-CoA}
+\+
+\chemfig{CO_2}
+\schemestop
+\end{center}
+\begin{center}\tiny$\Delta G'\degree = -33.5$ kJ/mol\end{center}
 \end{itemize}
 
 \subsection{Metabolismo dei lipidi}
