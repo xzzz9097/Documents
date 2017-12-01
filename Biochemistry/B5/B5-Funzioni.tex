@@ -84,7 +84,14 @@
          )%
 }
 
-\def \CoA {\tiny\chemfig{HS-CH_2-CH_2-NH-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-O-PO_2^{-}-O-PO_2^{-}-O-CH_2!{ribosiofosfatoadenina}}}
+\def \CoA {
+\tiny
+\schemestart
+$\underbrace{\chemfig{HS-CH_2-CH_2-NH-}}_{\beta\textnormal{-mercapto-etilammina}}$
+$\underbrace{\chemfig{C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-O}}_{\textnormal{acido pantotenico}}$
+$\underbrace{\chemfig{PO_2^{-}-O-PO_2^{-}-O-CH_2!{ribosiofosfatoadenina}}}_{\textnormal{3'-fosfoadenosina difosfato}}$
+\schemestop
+}
 
 \def \ACP {\tiny\chemfig{HS-CH_2-CH_2-NH-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-O-PO_2^{-}-O-PO_2^{-}-O-CH_2-CH(-[:90]C(-[:90]...)=O)(-[:270]NH(-[:270]...))}}
 
