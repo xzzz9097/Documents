@@ -85,6 +85,11 @@
          )%
 }
 
+\def \Pantotenato {
+  \tiny
+  \chemfig{HO-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-OH}
+}
+
 \def \CoA {
 \tiny
 \schemestart
@@ -126,6 +131,56 @@ Rientra inoltre nella \textbf{proteina di trasporto di acili (ACP)}, componente 
 
 \end{titlepage}
 
+\section{Chimica}
+\\
+
+\begin{center}\Pantotenato\end{center}
+
+\begin{center}
+  \tiny
+  \begin{tabular}{ | l | l | }
+    \hline
+    Nome IUPAC & Acido 3-[(2R)-2,4-diidrossi-3,3-dimetil-butanamido]propanoico \\ \hline
+    Formula bruta & \chemfig{C_9H_{17}NO_5} \\ \hline
+    Massa molecolare & 219 g/mol \\ \hline
+    Solubilità & 2.11 g/mL (molto solubile) \\
+    \hline
+  \end{tabular}
+\end{center}
+
+L'acido pantotenico o pantenolo (vitamina B5 o vitamina W) deriva dalla fusione, tramite legame carboamidico, di una molecola di \textbf{$\beta$-alanina} con una molecola di \textbf{acido pantoico}, derivato dall'acido butirrico.\\
+La forma chirale biologicamente attiva è solamente quella \textbf{destrogira}. La forma levogira può fungere da antagonista dell'isomero destrogiro.
+
+\subsection{Storia}
+Come in tutte le scoperte delle vitamine idrosolubili, anche la vitamina B5 è stata studiata su batteri e cellule eucariotiche di funghi e animali.\\
+Per il suo carattere \textbf{idrofilo}, la sua natura \textbf{polifunzionale}, il fatto di \textbf{precipitare} e \textbf{cristallizzarsi} facilmente, l’acido pantotenico è stato difficile da isolare direttamente mediante i classici metodi usati nella prima metà del ‘900.\\
+Gli studi di Williams, Elvehjem e Jukes furono determinanti nella scoperta delle funzioni biochimiche di tale vitamina.\\
+Nel \textbf{1933 R. J. Williams} e il suo gruppo hanno isolato una sostanza acida da materiale biologico che agiva come \textbf{fattore di crescita nel lievito} e lo chiamarono acido \textbf{pantotenico}: il termine deriva dal greco e significa letteralmente \textit{dappertutto}, indicando l'\textbf{ubiquitarietà} del composto all'interno comuni alimenti.\\
+Nel \textbf{1939} si stabilì essere una \textbf{vitamina} quando si vide che era identico al fattore del filtrato nei ratti e galline, e agiva da \textbf{anti-dermatite}: furono Koehn e Elvehjem a compiere questa scoperta, determinando che il composto aveva funzione di \textbf{anti-pellagra}. Infatti iniettandolo in galline affette scoprirono che queste non sviluppavano più la malattia.\\
+Nel \textbf{1940} si arriva alla sintesi chimica della vitamina per opera di Williams e Major.\\
+Nel \textbf{1947} Lipmann identifica e spiega la sua funzione biochimica nel \textbf{coenzima A}.\\
+A metà degli anni ’60 si identifica la presenza dell’acido pantotenico nei trasportatori di membrana (\textbf{ACP}).
+
+\subsection{Isolamento}
+Williams isolò diversi grammi di acido pantotenico dal fegato di pecora attraverso metodi di cromatografia e frazionamento.
+Il processo prevedeva:
+\begin{enumerate}
+\item \textbf{Autolisi del fegato} per ottenere un filtrato chiaro
+\item \textbf{Rimozione delle basi} tramite assorbimento dalla terra da follone (nome comune, minerario e commerciale, di ogni miscela di argilla ad elevata plasticità utilizzata nella decolorazione, filtratura e purificazione di oli e grassi di origine animale, minerale e vegetale)
+\item \textbf{Assorbimento dei principi} sul carboncino e successiva eluizione
+\item \textbf{Evaporazione} fino alla secchezza in presenza di ossalato di brucina (composto organico simile alla stricnina, usato per il riconoscimento analitico dei nitrati)
+\item \textbf{Estrazione} della componente con cloroformio per ottenere pantotenato di brucina (insieme ad altri Sali di brucina)
+\item \textbf{Distribuzione frazionale} della brucina tra cloroformio e acqua
+\item \textbf{Conversione al sale di calcio}
+\item \textbf{Frazionamento del sale di calcio} mediante vari solventi
+\end{enumerate}
+
+\subsection{Caratteristiche chimico-fisiche}
+La configurazione sterica dell'acido pantotenico è fondamentale nel riconoscimento enzimatico delle reazioni biochimiche: infatti soltanto la sua forma destrogira è attiva. Nelle sintesi della vitamina si forma sempre una miscela racemica.\\
+Non è presente in natura nella forma libera, ma si può ritrovare come componente strutturale del \textbf{coenzima A} e della \textbf{4'-fosfopanteteina}. Quest’ultima è unita a un gruppo prostetico di trasportatori di membrana coinvolto nella sintesi di acidi grassi.\\
+L’acido pantotenico è un \textbf{olio} di color \textbf{giallo pallido}, estremamente \textbf{igroscopico} e \textbf{inodore}.
+È inoltre \textbf{instabile} al calore, alle basi ed agli acidi ed è \textbf{solubile} in acqua.
+
 \section{Coenzima A}
 \begin{center}\CoA\end{center}
 Il coenzima A è coinvolto in reazioni di trasferimento di gruppi acetilici e acilici, relativi al metabolismo ossidativo e al catabolismo.\\
@@ -154,7 +209,7 @@ La \textbf{coenzima A idrolasi} catalizza l'idrolisi di CoA a 3'-5'-ADP e 4'-fos
     \node (1) [block]{Acido pantotenico};
     \node (2) [block, below of=1]{Acido 4'-fosfopantotenico};
     \node (3) [block, below of=2]{4'-fosfopantotenilcisteina};
-    \node (4) [block, below of=3]{4'-fosfopantoteina};
+    \node (4) [block, below of=3]{4'-fosfopanteteina};
     \node (5) [block, below of=4]{4'-defosfo-CoA};
     \node (6) [block, below of=5]{Coenzima A};
 
