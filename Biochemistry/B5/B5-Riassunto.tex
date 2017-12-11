@@ -1,0 +1,287 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[italian]{babel}
+\usepackage[version=3]{mhchem}
+\usepackage{textgreek}
+\usepackage{gensymb}
+\usepackage{chemfig}
+\usepackage{tikz}
+\usepackage{fullpage}
+\usetikzlibrary{shapes,arrows, positioning,calc}
+
+\tikzstyle{block} = [rectangle, draw, text centered, minimum height=1.5em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{linewithouttip} = [draw, -]
+\tikzstyle{reverseline} = [draw, latex'-]
+\tikzstyle{thickline} = [draw, -latex', line width = 0.4mm]
+
+\usepackage[utf8]{inputenc}
+
+\makeatletter
+\definearrow5{-n>}{
+	\CF@arrow@shift@nodes{#3}%
+	\expandafter\draw\expandafter[\CF@arrow@current@style,-CF@full](\CF@arrow@start@node)--(\CF@arrow@end@node)node[pos=.2](narrow@arctangent@i){} node[pos=.5](narrow@arctangent@ii){};%
+	\edef\CF@tmp@str{[\ifx\@empty#1\@empty draw=none,\fi-CF@full]}%
+	\expandafter\draw\CF@tmp@str (narrow@arctangent@i)%
+		arc[radius=\CF@compound@sep*\CF@current@arrow@length*\ifx\@empty#4\@empty0.333\else#4\fi,start angle=\CF@arrow@current@angle+90,%
+		delta angle=-\ifx\@empty#5\@empty60\else#5\fi]node(narrow@start){};
+	\edef\CF@tmp@str{[\ifx\@empty#2\@empty draw=none,\fi-CF@full]}%
+	\expandafter\draw\CF@tmp@str (narrow@arctangent@ii)%
+		arc[radius=\CF@compound@sep*\CF@current@arrow@length*\ifx\@empty#4\@empty0.333\else#4\fi,start angle=\CF@arrow@current@angle+90,%
+		delta angle=-\ifx\@empty#5\@empty60\else#5\fi]node(narrow@end){};
+	\edef\CF@tmp@str{\if\string-\expandafter\@car\detokenize{#4.}\@nil+\else-\fi}%
+	\CF@arrow@display@label{#1}{0}\CF@tmp@str{narrow@start}{#2}{1}\CF@tmp@str{narrow@end}%
+}
+\makeatother
+
+\newcommand*\derivesubmol[4]{%
+    \saveexpandmode\saveexploremode\expandarg\exploregroups
+    \csname @\ifcat\relax\noexpand#2first\else second\fi oftwo\endcsname
+        {\expandafter\StrSubstitute\@car#2\@nil}
+        {\expandafter\StrSubstitute\csname CF@@#2\endcsname}
+    {\@empty#3}{\@empty#4}[\temp@]%
+    \csname @\ifcat\relax\noexpand#1first\else second\fi oftwo\endcsname
+        {\expandafter\let\@car#1\@nil}
+        {\expandafter\let\csname CF@@#1\endcsname}\temp@
+    \restoreexpandmode\restoreexploremode
+}
+
+\setcrambond{2pt}{}{}
+
+\definesubmol{adenina}{N*5([::-18]-*6(-N=-N=(-NH_2)-)=-N=-)}
+
+\definesubmol{s1}{-[2]!{adenina}}
+\definesubmol{s2}{-[6,.6]O-PO_3^{2-}}
+\definesubmol{s3}{-[6,.6]OH}
+
+\definesubmol{ribosiofosfatoadenina}{%
+    -[::-90,2]%
+        (%
+            -[::115,1.176]O%
+            -[::-50,1.176]%
+        )%
+    <[::45,0.8]%
+        (%
+          (!{s3})
+          -[::45,,,,line width=2pt,shorten <=-.5pt,shorten >=-.5pt]%
+              (!{s2})%
+          >[::45,0.8]%
+              (!{s1})%
+         )%
+}
+
+\definesubmol{ribosioadenina}{%
+    -[::-90,2]%
+        (%
+            -[::115,1.176]O%
+            -[::-50,1.176]%
+        )%
+    <[::45,0.8]%
+        (%
+          (!{s3})
+          -[::45,,,,line width=2pt,shorten <=-.5pt,shorten >=-.5pt]%
+          >[::45,0.8]%
+              (!{s1})%
+         )%
+}
+
+\def \Pantotenato {
+  \tiny
+  \chemfig{HO-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-OH}
+}
+
+\def \CoA {
+\tiny
+\schemestart
+$\underbrace{\chemfig{HS-CH_2-CH_2-NH-}}_{\beta\textnormal{-mercapto-etilammina}}$
+$\underbrace{\chemfig{C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-O}}_{\textnormal{acido pantotenico}}$
+$\underbrace{\chemfig{PO_2^{-}-O-PO_2^{-}-O-CH_2!{ribosiofosfatoadenina}}}_{\textnormal{3'-fosfoadenosina difosfato}}$
+\schemestop
+}
+
+\def \ACP {
+\tiny
+\schemestart
+$\underbrace{\chemfig{HS-CH_2-CH_2-NH-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-O-PO_2^{-}-}}_{\textnormal{4'-fosfopanteteina}}$
+$\underbrace{\chemleft. \chemfig{O-CH_2-CH(-[:90]C(-[:90]...)=O)(-[:270]NH(-[:270]...))}\chemright\}}_{\textnormal{serina}}$
+proteina
+\schemestop
+}
+
+\date{}
+
+\author{
+  \normalsize
+  Francesco Viviani\\
+  \and
+  \normalsize
+  Marco Petriccione\\
+  \and
+  \normalsize
+  Mehmet Ata Atis\\
+  \and
+  \normalsize
+  Marco Albera
+}
+
+\setatomsep{15pt}
+
+\title{%
+  Vitamina B5 \\
+  \large Acido pantotenico: funzione biologica nell'uomo
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Chimica}
+\\
+
+\begin{center}\Pantotenato\end{center}
+
+\begin{center}
+  \tiny
+  \begin{tabular}{ | l | l | }
+    \hline
+    Nome IUPAC & Acido 3-[(2R)-2,4-diidrossi-3,3-dimetil-butanamido]propanoico \\ \hline
+    Formula bruta & \chemfig{C_9H_{17}NO_5} \\ \hline
+    Massa molecolare & 219 g/mol \\ \hline
+    Solubilità & 2.11 g/mL (molto solubile) \\
+    \hline
+  \end{tabular}
+\end{center}
+
+L'acido pantotenico o pantenolo (vitamina B5 o vitamina W) deriva dalla fusione, tramite legame carboamidico, di una molecola di \textbf{$\beta$-alanina} con una molecola di \textbf{acido pantoico}, derivato dall'acido butirrico.\\
+La forma chirale biologicamente attiva è solamente quella \textbf{destrogira}. La forma levogira può fungere da antagonista dell'isomero destrogiro.\\
+Quando isolato appare come \textbf{olio} di color \textbf{giallo pallido}, estremamente \textbf{igroscopico} e \textbf{inodore}.
+È inoltre \textbf{instabile} al calore, alle basi ed agli acidi ed è \textbf{solubile} in acqua.
+
+\section{Digestione e assorbimento}
+
+\subsection{Fonti alimentari}
+L’acido pantotenico è praticamente \textbf{ubiquitario} in ogni tipo di alimento, che sia di origine vegetale o animale, in una quantità media di 20-50 {\textmu}g/g.\\
+È particolarmente abbondante negli \textbf{organi animali}, mentre cibi altamente raffinati come zuccheri, grassi e oli ne sono completamente privi.\\
+L’assunzione raccomandata di vitamina B5 è pari a \textbf{5 mg/giorno} per adolescenti e adulti, e aumenta in occasione della gravidanza.
+
+\subsection{Assorbimento}
+Dato che \textbf{l’organismo umano non può sintetizzare da sé la vitamina B5}, essa deve essere assorbita dalla dieta.\\
+Negli alimenti è prevalentemente presente sotto forma di \textbf{CoA}, che può venire scisso con varie idrolisi fino a restituire l'acido pantotenico isolato.\\
+Esso entra poi negli enterociti grazie ad un \textbf{trasporto accoppiato al sodio} mediato dalla proteina \textbf{SMVT} (\textit{sodium-dependent multivitamin transporter}). Si tratta di un trasportatore transmembrana non specifico, che funziona per altre vitamine come biotina e derivati.\\
+L’uptake di vitamina B5 è \textbf{stimolato da un’alta concentrazione di sodio} e inibito da potassio, ouabaina, gramicidina D, cianide, azide, o semplicemente se la concentrazione di sodio scende sotto i 40 mM.\\
+\textbf{La funzione di SMVT sembra essere connessa con quella di PKC}, in quanto il trasportatore comprende 2 siti fosforilabili da questa proteina chinasi. Se si inibisce la PKC il trasporto di acido pantotenico e di biotina verrà infatti inibito.\\
+La vitamina B5 è sintetizzata dalla microflora batterica, anche se in quantità poco nota e probabilmente non significativa.
+
+\subsection{Escrezione}
+L’acido pantotenico è escreto tramite le urine in una \textbf{quantità proporzionale all’apporto} attraverso la dieta, infatti quando si introducono quantità maggiori di \textbf{4 mg/giorno} la sua escrezione supera il livello basale.\\
+
+\section{Biochimica}
+\subsection{Coenzima A}
+\begin{center}\CoA\end{center}
+Il coenzima A è coinvolto in reazioni di \textbf{trasferimento di gruppi acetilici e acilici}.\\
+Grazie al \textbf{dominio adenosinico}, CoA è in grado di legarsi agli enzimi che lo richiedono, mentre quello \textbf{tioetanolamminico} agisce nel legame dei substrati carboniosi e nel loro spostamento da un centro catalitico all'altro.\\
+Il legame fra un gruppo acilico od acetilico, e quello tiolico del coenzima, porta alla formazione di un \textbf{tioestere}, rispettivamente \textbf{acil-CoA} o \textbf{acetil-CoA}. Esso è un \textbf{composto ad alta energia}, a causa della natura instabile del legame tioestereo, il cui $\Delta G'\degree$ di idrolisi permette lo svolgimento di numerose reazioni biochimiche.
+
+\subsubsection{Sintesi}
+La fosforilazione dell'acido pantotenico, mediata dalla \textbf{chinasi dell'acido pantotenico} (PanK), è un fondamentale punto di controllo della sintesi del coenzima A. Infatti PanK è regolata da:
+\begin{itemize}
+\item \textbf{vari anioni}, che attivano o inibiscono non specificamente l'enzima
+\item \textbf{CoA e suoi derivati}, che inibiscono la sintesi di nuovo coenzima con un meccanismo a \textbf{feedback negativo}
+\item \textbf{carnitina}, amminoacido trasportatore di acidi grassi nel mitocondrio, che indirettamente attiva l'enzima bloccando l'inibizione da parte dei derivati di CoA
+\end{itemize}
+\textbf{Digiuno e diabete} di tipo I (da ipoinsulinemia) \textbf{incrementano} l'attività di PanK e dunque \textbf{la quantità di CoA} libero. Al contrario, eccesso di glucosio e di acidi grassi all'interno della cellula riducono l'attività di PanK, per sottrazione di carnitina e maggiori concentrazioni di acetil-CoA.\\
+\begin{center}
+\begin{tikzpicture}[node distance = 2cm, trim left = (1), trim right = (1)]
+
+    \node (1) [block]{Acido pantotenico};
+    \node (2) [block, below of=1]{Acido 4'-fosfopantotenico};
+    \node (3) [block, below of=2]{4'-fosfopantotenilcisteina};
+    \node (4) [block, below of=3]{4'-fosfopanteteina};
+    \node (5) [block, below of=4]{4'-defosfo-CoA};
+    \node (6) [block, below of=5]{Coenzima A};
+
+    \path [line] (1) -- (2) node (7) [midway, left, xshift = -2mm] {\textit{PanK}};
+    \path [line] (2) -- (3) node [midway, left, xshift = -2mm, align = right, text width = 5cm] {\textit{4'-fosfopantotenilcistina sintetasi}};
+    \path [line] (3) -- (4) node [midway, left, xshift = -2mm, align = right, text width = 5cm] {\textit{4'-fosfopantotenilcistina decarbossilasi}};
+    \path [line] (4) -- (5) node [midway, left, xshift = -2mm, align = right, text width = 5cm] {\textit{Defosfo-CoA pirofosforilasi}};
+    \path [line] (5) -- (6) node [midway, left, xshift = -2mm, align = right, text width = 5cm] {\textit{Defosfo-CoA chinasi}};
+    \path [dashed, line] (6) --++ (-6,-0) |- (7) node [midway, left] {$\ominus$};
+    \path [line] (6) --++ (3,0) |- (4) node[midway, right]{\textit{CoA idrolasi}}
+
+\end{tikzpicture}
+\end{center}
+
+\subsubsection{Ruolo metabolico}
+\vspace{5mm}
+\begin{center}
+\begin{tikzpicture}[auto, trim left = (4), trim right = (4), every node/.style={outer sep=5}]
+
+    \node (1) [block]{Piruvato};
+    \node (2) [block, right = 2cm of 1]{Amminoacidi};
+    \node (3) [block, right = 2cm of 2]{Acidi grassi};
+    \node (4) [block, below = 1cm of 2]{Acetil-CoA};
+    \node (5) [block, below = 1cm of 4]{Ciclo dei TCA};
+    \node (6) [block, left = 2cm of 5]{Corpi chetonici};
+    \node (7) [block, right = 2cm of 5]{Steroli e acidi grassi};
+
+    \path [line] (1) -- (4);
+    \path [line] (2) -- (4);
+    \path [line] (3) -- (4);
+    \path [reverseline] (5) -- (4);
+    \path [reverseline] (6) -- (4);
+    \path [reverseline] (7) -- (4);
+
+\end{tikzpicture}
+\end{center}
+L'\textbf{acetil-CoA} rappresenta il trasportatore del gruppo acetato usato come substrato energetico del \textbf{ciclo degli acidi tricarbossilici}.\\
+Su questo composto convergono dunque le vie metaboliche di:
+\begin{itemize}
+\item \textbf{\textit{\textbeta}-ossidazione} degli acidi grassi a lunga catena
+\item \textbf{glicolisi} dei carboidrati di riserva o di nuova ingestione
+\item ossidazione dei \textbf{corpi chetonici}
+\item ossidazione dell'\textbf{etanolo}
+\item demolizione di alcuni \textbf{amminoacidi}
+\end{itemize}
+Alcune reazioni di particolare rilevanza cui esso partecipa sono:
+\begin{itemize}
+\item \textbf{decarbossilazione del piruvato}, proveniente dal metabolismo glicolitico dei carboidrati, con la formazione di \textbf{acetil-CoA}.\\ Quest'ultimo è il punto di ingresso del ciclo dei TCA, in quanto reagisce con ossalacetato per formare \textbf{acido citrico}. La reazione è catalizzata dall'enzima piruvato-deidrogenasi (\textbf{PDH}).
+\begin{center}
+\tiny
+\setatomsep{15pt}
+\setcompoundsep{10em}
+\schemestart
+\chemname{\chemfig{CH_3(-[:90]C(-[:90]C(-[:45]O^{-})(=[:135]O))=O)}}{Piruvato}
+\arrow(.mid east--.mid west){-U>[CoA-SH + NAD\textsuperscript{+}][NADH][][0.2]}[,2]
+\chemname{\chemfig{CH_3((-[:90]C(-[:45]S-CoA)(=[:135]O)))}}{Acetil-CoA}
+\+
+\chemfig{CO_2}
+\schemestop
+\end{center}
+\begin{center}\tiny$\Delta G'\degree = -33.4$ kJ/mol\end{center}
+\item \textbf{decarbossilazione di $\alpha$-chetoglutarato}, con formazione di \textbf{succinil-CoA}.\\ Esso, oltre ad essere convertito in succinato nella successiva tappa del ciclo dei TCA, può reagire con la glicina per formare acido $\delta$-aminolevulinico, precursore del \textbf{gruppo eme}. Da ciò deriva l'importanza della vitamina B5 per la corretta sintesi di \textbf{emoglobina}, e dunque per il trasporto di ossigeno, e dei \textbf{citocromi}, per quello di elettroni.
+\begin{center}
+\tiny
+\setatomsep{15pt}
+\setcompoundsep{10em}
+\schemestart
+\chemname{\chemfig{COO^{-}(-[:90]C(-[:90]CH_2(-[:90]CH_2-COO^{-}))=O)}}{$\alpha$-chetoglutarato}
+\arrow(.mid east--.mid west){-U>[CoA-SH + NAD\textsuperscript{+}][NADH][][0.2]}[,2]
+\chemname{\chemfig{O(=[:90]C((-S-CoA)(-[:90]CH_2(-[:90]CH_2-COO^{-}))))}}{Succinil-CoA}
+\+
+\chemfig{CO_2}
+\schemestop
+\end{center}
+\begin{center}\tiny$\Delta G'\degree = -33.5$ kJ/mol\end{center}
+\item \textbf{via metabolica dell'acido mevalonico}, che inizia con la condensazione di due molecole di acetil-CoA formando acetoacetil-CoA. Esso reagisce poi con una terza unità di acetil-CoA, dando luogo all'\textbf{acido mevalonico}.\\
+L'acido mevalonico è il precursore degli \textbf{isoprenoidi}, e dunque anche degli \textbf{steroidi} attraverso lo squalene.
+È quindi chiara l'importanza del coenzima per la \textbf{sintesi di colesterolo, ormoni steroidei e altri lipidi}, e per la modificazione di proteine mediante \textbf{isoprenilazione}. \\
+\end{itemize}
+
+\subsection{Proteina trasportatrice di acili}
+\begin{center}\ACP\end{center}
+\textbf{ACP} fa parte del complesso della \textbf{sintasi degli acidi grassi}, ed è quindi coinvolta nella biosintesi di tali composti.\\
+Oltre ad introdurli con la dieta, infatti, buona parte dei lipidi derivano dal metabolismo dei carboidrati, convertiti in \textbf{piruvato} durante la glicolisi.\\
+Il piruvato, prodotto nel citoplasma, diffonde passivamente nella matrice mitocondriale. In essa viene ossidato ad \textbf{acetil-CoA}, materiale di partenza per la sintesi di acidi grassi.\\
+Acetil-CoA viene esportato dal mitocondrio come citrato, e si riforma nel citoplasma, dove avviene la sintesi lipidica.\\
+
+\end{document}
