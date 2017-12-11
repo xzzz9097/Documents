@@ -277,11 +277,153 @@ L'acido mevalonico è il precursore degli \textbf{isoprenoidi}, e dunque anche d
 È quindi chiara l'importanza del coenzima per la \textbf{sintesi di colesterolo, ormoni steroidei e altri lipidi}, e per la modificazione di proteine mediante \textbf{isoprenilazione}. \\
 \end{itemize}
 
+\subsubsection{Modificazione degli zuccheri}
+\vspace{5mm}
+\begin{center}
+\setatomsep{}
+\footnotesize
+\setcrambond{2pt}{}{}
+\schemestart
+\chemname{\chemfig{HO-[2,0.5,2]?<[7,0.7](-[2,0.5]OH)-[,,,,
+line width=2pt](-[6,0.5]NH-[:270,0.7]C(-[:270,0.7]CH_3)=[:0,0.7]O)>[1,0.7](-[6,0.5]OH)-[3,0.7] O-[4]?(-[:90,0.5]CH_2-[:180,0.7]HO)}}{N-acetil-D-glucosammina}
+\arrow{0}[0,1.5]
+\chemname{\chemfig{HO-[6,0.5,2]?<[7,0.7](-[2,0.5]OH)-[,,,,
+line width=2pt](-[6,0.5]NH-[:270,0.7]C(-[:270,0.7]CH_3)=[:0,0.7]O)>[1,0.7](-[6,0.5]OH)-[3,0.7] O-[4]?(-[:90,0.5]CH_2-[:180,0.7]HO)}}{N-acetil-D-galattosammina}
+\schemestop
+\end{center}
+Gli amminozuccheri \textbf{D-glucosammina} e \textbf{D-galattosammina} reagiscono con il coenzima A per formare prodotti acetilati.\\
+Essi rientrano come componenti strutturali in vari \textbf{mucopolisaccaridi}, quali \textbf{acido ialuronico} e \textbf{condroitinsolfato}, e sono quindi necessari per la formazione ed il mantenimento della \textbf{matrice} di \textbf{ossa}, \textbf{cartilagini} e altri tessuti.
+
+\subsubsection{Modificazione delle proteine}
+Un significativo campo di attività del coenzima A è l'alterazione delle proteine allo scopo di modificarne \textbf{collocazione nelle membrane}, \textbf{interazioni} con altre proteine e \textbf{indirizzamento} a specifici organelli o strutture.
+\begin{itemize}
+\item \textbf{palmitoilazione}, realizzata mediante un legame tioestereo \textbf{instabile}, di facile idrolisi. Sono perciò possibili cicli di palmitoilazione e depalmitoilazione adatti a regolare la funzionalità di una proteina a seconda delle esigenze.
+\begin{center}
+\chemnameinit{}
+\tiny
+\setatomsep{15pt}
+\setcompoundsep{10em}
+\schemestart
+\chemname{\chemfig{...-C(=[:90]O)-\chemabove{C}{H}(-[:270]CH_2-[:270]SH)-\chemabove{N}{H}-...}}{Residuo cisteinico}
+\arrow(.mid east--.mid west){-U>[Palmitoil-CoA][CoA][][0.2]}[,2]
+\chemname{\chemfig{...-C(=[:90]O)-\chemabove{C}{H}(-[:270]CH_2-[:270]S-C(=[:270]O)-{(}CH_2{)}_{14}-CH_3)-\chemabove{N}{H}-...}}{Residuo cisteinico palmitoilato}
+\schemestop
+\end{center}
+\item \textbf{miristoilazione}, che invece prevede la formazione di un legame ammidico \textbf{stabile} con un residuo di glicina.
+\item \textbf{acetilazione}, molto frequente all'estremità amminica di proteine solubili ed è catalizzata dalle \textbf{acetiltransferasi N-terminali} (NAT).
+\begin{center}
+\chemnameinit{}
+\tiny
+\setatomsep{15pt}
+\setcompoundsep{10em}
+\schemestart
+\chemname{\chemfig{...-C(=[:90]O)-\chemabove{C}{H}(-[:270]R)-NH_3^{+}}}{Polipeptide}
+\arrow(.mid east--.mid west){-U>[Acetil-CoA][CoA][][0.2]}[,2]
+\chemname{\chemfig{...-C(=[:90]O)-\chemabove{C}{H}(-[:270]R)-\chemabove{N}{H}-C(=[:270]O)-CH_3}}{Polipeptide con N-ter acetilato}
+\schemestop
+\end{center}
+\item \textbf{prenilazione}, che avviene solitamente su residui di cisteina di motivi CAAX (cisteina, amminoacido alifatico e residuo C-terminale), per aggiunta di \textbf{farnesile} o \textbf{geranilgeranile}.\\
+\end{itemize}
+Alcuni esempi biologicamente rilevanti di modificazione proteica mediata da CoA sono:
+\begin{itemize}
+\item \textbf{acetilazione degli istoni}, che induce rilassamento della cromatina e facilita la trascrizione.
+\item \textbf{acetilazione di $\boldsymbol\alpha$-tubulina}, che stabilizza i microtubuli prevenendone la depolimerizzazione.
+\item \textbf{acilazione di proteine di membrana}, che le localizza e mantiene all'interno della membrana plasmatica permettendone il corretto funzionamento. Interessa ad esempio le \textbf{proteine G} e le \textbf{NO-sintasi}.
+\end{itemize}
+
 \subsection{Proteina trasportatrice di acili}
 \begin{center}\ACP\end{center}
-\textbf{ACP} fa parte del complesso della \textbf{sintasi degli acidi grassi}, ed è quindi coinvolta nella biosintesi di tali composti.\\
-Oltre ad introdurli con la dieta, infatti, buona parte dei lipidi derivano dal metabolismo dei carboidrati, convertiti in \textbf{piruvato} durante la glicolisi.\\
-Il piruvato, prodotto nel citoplasma, diffonde passivamente nella matrice mitocondriale. In essa viene ossidato ad \textbf{acetil-CoA}, materiale di partenza per la sintesi di acidi grassi.\\
-Acetil-CoA viene esportato dal mitocondrio come citrato, e si riforma nel citoplasma, dove avviene la sintesi lipidica.\\
+\textbf{ACP} fa parte del complesso della \textbf{sintasi degli acidi grassi}.
+Oltre ad introdurli con la dieta, buona parte dei lipidi derivano dal metabolismo dei carboidrati, convertiti in \textbf{piruvato} durante la glicolisi.\\
+Il piruvato, prodotto nel citoplasma, diffonde passivamente nella matrice mitocondriale, dove viene ossidato ad \textbf{acetil-CoA}, materiale di partenza per la sintesi di acidi grassi. Acetil-CoA viene \textbf{esportato} dal mitocondrio come citrato, e si riforma all'esterno di esso, dove avviene la sintesi lipidica.
+\subsubsection{Sintesi degli acidi grassi}
+\vspace{5mm}
+\begin{center}
+\begin{tikzpicture}[auto, trim left = (5), trim right = (5)]
+
+    \node (1) [block]{acetil-CoA};
+    \node (2) [block, right = 6cm of 1]{malonil-CoA};
+    \node (3) [block, below = 0.75cm of 1]{acetil-ACP};
+    \node (4) [block, below = 0.75cm of 2]{malonil-ACP};
+    \node (5) [block, below = 0.75cm of {$(3)!0.5!(4)$}]{acetoacetil-ACP};
+    \node (6) [block, below = 0.75cm of 5]{butirril-ACP (C4)};
+    \node (7) [block, below = 0.75cm of 6]{C6-ACP};
+    \node (8) [block, below = 0.75cm of 7]{C8-, C10-, Cn-ACP};
+    \node (9) [block, below = 0.75cm of 8]{palmitil-ACP (C16)};
+
+    \path [line] (1) -- (2);
+    \path [line] (2) -- (4);
+    \path [line] (1) -- (3);
+    \path [line] (3) -- (5);
+    \path [line] (4) -- (5);
+    \path [line] (5) -- (6);
+    \path [line] (6) -- (7) node (11) [midway,right];
+    \path [line] (7) -- (8) node (12) [midway, right];
+    \path [dashed, line] (8) -- (9);
+
+    \path [line] (4) --++ (2,-0) |- (11);
+    \path [line] (4) --++ (2,-0) |- (12);
+
+\end{tikzpicture}
+\end{center}
+L'\textbf{acido palmitico} ottenuto si distacca da ACP. Può essere quindi usato come tale, oppure ulteriormente allungato o desaturato, per produrre gli altri acidi grassi sintetizzabili dall'organismo.\\
+Essi sono fondamentali per produzione ed immagazzinamento di \textbf{energia}, per la \textbf{consistenza strutturale} delle cellule, per \textbf{termoregolazione} e \textbf{ammortizzamento} e, in qualità di intermedi, per la sintesi di ormoni e altre molecole biologicamente significative.
+
+\begin{thebibliography}{9}
+
+\bibitem{williams}
+  Roger J. Williams,
+  \textit{The chemistry and biochemistry of pantothenic acid},
+  Interscience Publishers, Inc.,
+  1943.
+\bibitem{erdman}
+  John W. Erdman, Jr., Ian A. MacDonald, Steven H. Zeisel,
+  \textit{Present Knowledge in Nutrition},
+  Wiley-Blackwell,
+  10\textsuperscript{th} edition,
+  2012.
+\bibitem{ball}
+  George F. M. Ball,
+  \textit{Vitamins. Their role in the human body.},
+  Wiley-Blackwell,
+  1\textsuperscript{st} edition,
+  2004.
+\bibitem{ball2}
+  George F. M. Ball,
+  \textit{Vitamins in foods. Analysis, bioavailability, and stability},
+  Taylor & Francis,
+  1\textsuperscript{st} edition,
+  2006.
+\bibitem{Vadlapudi}
+  Vadlapudi, A. D., Vadlapatla, R. K., & Mitra, A. K.,
+  \textit{Sodium Dependent Multivitamin Transporter (SMVT): A Potential Target for Drug Delivery. Current Drug Targets},
+  13(7),
+  994–1003,
+  2012.
+\bibitem{lehninger}
+  David L. Nelson, Michael M. Cox,
+  \textit{Lehninger principles of biochemistry},
+  Freeman, W. H. & Company,
+  6\textsuperscript{th} edition,
+  2012.
+\bibitem{devlin}
+  Thomas M. Devlin,
+  \textit{Biochimica con aspetti chimico-farmaceutici},
+  EdiSES,
+  7\textsuperscript{a} edizione,
+  2011.
+\bibitem{Linder}
+  Maurine E. Linder et al.,
+  \textit{Lipid modifications of G proteins: $\alpha$ subunits are palmitoylated},
+  Department of Pharmacology, University of Texas Southwestern Medical Center, Dallas,
+  1993.
+\bibitem{Baldanzi}
+  Gianluca Baldanzi,
+  \textit{Corso di Biochimica I},
+  CdLM in Medicina e Chirurgia,
+  Università del Piemonte Orientale,
+  Anno accademico 2017-2018.
+
+\end{thebibliography}
 
 \end{document}
