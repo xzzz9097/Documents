@@ -229,10 +229,13 @@ L’acido pantotenico è escreto tramite le urine in una \textbf{quantità propo
 Questo avviene dopo che è stato liberato dal \textbf{coenzima A} da una serie di reazioni di idrolisi che liberano \textbf{$\beta$-mercaptoetilammina} e \textbf{fosfato}.
 
 \section{Coenzima A}
+\vspace{0.25cm}
 \begin{center}\CoA\end{center}
+\vspace{0.25cm}
 Il coenzima A è coinvolto in reazioni di \textbf{trasferimento di gruppi acetilici e acilici}.\\
 Grazie al \textbf{dominio adenosinico}, CoA è in grado di legarsi agli enzimi che lo richiedono, mentre quello \textbf{fosfopanteteinico} agisce nel legame dei substrati carboniosi e nel loro spostamento da un centro catalitico all'altro.\\
 Il legame fra un gruppo acilico od acetilico, e quello tiolico del coenzima, porta alla formazione di un \textbf{tioestere}, rispettivamente \textbf{acil-CoA} o \textbf{acetil-CoA}. Esso è un \textbf{composto ad alta energia}, a causa della natura instabile del legame tioestereo, il cui $\Delta G'\degree$ di idrolisi permette lo svolgimento di numerose reazioni biochimiche.
+\vspace{0.75cm}
 \begin{center}
 \begin{tikzpicture}[auto, trim left = (4), trim right = (4), every node/.style={outer sep=5}]
 
@@ -253,6 +256,7 @@ Il legame fra un gruppo acilico od acetilico, e quello tiolico del coenzima, por
 
 \end{tikzpicture}
 \end{center}
+\vspace{0.75cm}
 L'\textbf{acetil-CoA} rappresenta il trasportatore del gruppo acetato usato come substrato energetico del \textbf{ciclo degli acidi tricarbossilici}.\\
 Su questo composto convergono dunque le vie metaboliche di:
 \begin{itemize}
@@ -404,7 +408,9 @@ La produzione di acido mevalonico è controllata mediante un meccanismo di \text
 CoA rientra nel processamento della \textbf{leucina}, in quanto il suo chetoacido, ottenuto per deaminazione, reagisce con il coenzima formando acido acetoacetico e acetil-CoA.
 
 \section {Proteina trasportatrice di acili}
+\vspace{0.25cm}
 \begin{center}\ACP\end{center}
+\vspace{0.25cm}
 \textbf{ACP} fa parte del complesso della \textbf{sintasi degli acidi grassi}, ed è quindi coinvolta nella biosintesi di tali composti.\\
 Oltre ad introdurli con la dieta, infatti, buona parte dei lipidi derivano dal metabolismo dei carboidrati, convertiti in \textbf{piruvato} durante la glicolisi.\\
 Il piruvato, prodotto nel citoplasma, diffonde passivamente nella matrice mitocondriale. In essa viene ossidato ad acetil-CoA, materiale di partenza per la sintesi di acidi grassi.\\
@@ -416,20 +422,21 @@ Il complesso enzimatico della sintasi prevede due subunità identiche, ciascuna 
 Acetil-CoA viene carbossilato, in una reazione dipendente da biotina come donatore, in \textbf{malonil-CoA}.\\
 Il gruppo acilico di malonil-CoA viene successivamente ceduto all'\textbf{estremità tiolica} di ACP, con formazione di malonil-ACP. Esso reagisce con acetil-ACP, analogamente derivato da acetil-CoA, per formare \textbf{acetoacetil-ACP}.\\
 Questo composto, dopo riduzione e deidratazione a butirril-ACP, reagisce nuovamente con malonil-ACP. Il composto così ottenuto possiede sei atomi di carbonio: quattro dati da butirril-ACP, due da malonil-ACP. Successive reazioni con malonil-ACP permettono l'elongazione del composto di due atomi di carbonio ad ogni ciclo, fino a produrre \textbf{acido palmitico} (16:0).\\
-L'acido palmitico può essere ulteriormente allungato o desaturato, per produrre gli altri acidi grassi sintetizzabili dall'organismo.
+L'\textbf{acido palmitico} ottenuto si distacca da ACP. Può essere quindi usato come tale, oppure ulteriormente allungato o desaturato, per produrre gli altri acidi grassi sintetizzabili dall'organismo.\\
+Essi sono fondamentali per produzione ed immagazzinamento di \textbf{energia}, per la \textbf{consistenza strutturale} delle cellule, per \textbf{termoregolazione} e \textbf{ammortizzamento} e, in qualità di intermedi, per la sintesi di ormoni e altre molecole biologicamente significative.
 
 \begin{center}
 \begin{tikzpicture}[auto, trim left = (5), trim right = (5)]
 
     \node (1) [block]{acetil-CoA};
     \node (2) [block, right = 6cm of 1]{malonil-CoA};
-    \node (3) [block, below = 1cm of 1]{acetil-ACP};
-    \node (4) [block, below = 1cm of 2]{malonil-ACP};
-    \node (5) [block, below = 1cm of {$(3)!0.5!(4)$}]{acetoacetil-ACP};
-    \node (6) [block, below = 1cm of 5]{butirril-ACP};
-    \node (7) [block, below = 1cm of 6]{C6-ACP};
-    \node (8) [block, below = 1cm of 7]{C8-, C10-, Cn-ACP};
-    \node (9) [block, below = 1cm of 8]{palmitil-ACP (C16)};
+    \node (3) [block, below = 0.75cm of 1]{acetil-ACP};
+    \node (4) [block, below = 0.75cm of 2]{malonil-ACP};
+    \node (5) [block, below = 0.75cm of {$(3)!0.5!(4)$}]{acetoacetil-ACP};
+    \node (6) [block, below = 0.5cm of 5]{butirril-ACP};
+    \node (7) [block, below = 0.5cm of 6]{C6-ACP};
+    \node (8) [block, below = 0.5cm of 7]{C8-, C10-, Cn-ACP};
+    \node (9) [block, below = 0.5cm of 8]{palmitil-ACP (C16)};
 
     \path [line] (1) -- (2);
     \path [line] (2) -- (4);
@@ -448,6 +455,7 @@ L'acido palmitico può essere ulteriormente allungato o desaturato, per produrre
 \end{center}
 
 \section{Modificazione degli zuccheri}
+\vspace{0.25cm}
 \begin{center}
 \setatomsep{}
 \footnotesize
@@ -460,6 +468,7 @@ line width=2pt](-[6,0.5]NH-[:270,0.7]C(-[:270,0.7]CH_3)=[:0,0.7]O)>[1,0.7](-[6,0
 line width=2pt](-[6,0.5]NH-[:270,0.7]C(-[:270,0.7]CH_3)=[:0,0.7]O)>[1,0.7](-[6,0.5]OH)-[3,0.7] O-[4]?(-[:90,0.5]CH_2-[:180,0.7]HO)}}{N-acetil-D-galattosammina}
 \schemestop
 \end{center}
+\vspace{0.25cm}
 Gli amminozuccheri \textbf{D-glucosammina} e \textbf{D-galattosammina} reagiscono con il coenzima A per formare prodotti acetilati, che rientrano come componenti strutturali in vari \textbf{mucopolisaccaridi}.\\
 Due esempi particolarmente rilevanti per il loro ruolo biologico sono:
 \begin{itemize}
