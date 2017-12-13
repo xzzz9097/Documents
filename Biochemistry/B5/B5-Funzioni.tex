@@ -230,9 +230,38 @@ Questo avviene dopo che è stato liberato dal \textbf{coenzima A} da una serie d
 
 \section{Coenzima A}
 \begin{center}\CoA\end{center}
-Il coenzima A è coinvolto in reazioni di trasferimento di gruppi acetilici e acilici, relativi al metabolismo ossidativo e al catabolismo.\\
-Grazie al dominio adenosinico, CoA è in grado di legarsi agli enzimi che lo richiedono, mentre quello tioetanolamminico agisce nel legame dei substrati carboniosi e nel loro spostamento da un centro catalitico all'altro.\\
-Il legame fra un gruppo acilico od acetilico, e quello tiolico del coenzima, porta alla formazione di un tioestere, rispettivamente \textbf{acil-CoA} o \textbf{acetil-CoA}. Esso è un \textbf{composto ad alta energia}, a causa della natura instabile del legame tioestereo, il cui $\Delta G'\degree$ di idrolisi permette lo svolgimento di numerose reazioni biochimiche.
+Il coenzima A è coinvolto in reazioni di \textbf{trasferimento di gruppi acetilici e acilici}.\\
+Grazie al \textbf{dominio adenosinico}, CoA è in grado di legarsi agli enzimi che lo richiedono, mentre quello \textbf{fosfopanteteinico} agisce nel legame dei substrati carboniosi e nel loro spostamento da un centro catalitico all'altro.\\
+Il legame fra un gruppo acilico od acetilico, e quello tiolico del coenzima, porta alla formazione di un \textbf{tioestere}, rispettivamente \textbf{acil-CoA} o \textbf{acetil-CoA}. Esso è un \textbf{composto ad alta energia}, a causa della natura instabile del legame tioestereo, il cui $\Delta G'\degree$ di idrolisi permette lo svolgimento di numerose reazioni biochimiche.
+\begin{center}
+\begin{tikzpicture}[auto, trim left = (4), trim right = (4), every node/.style={outer sep=5}]
+
+    \node (1) [block]{Piruvato};
+    \node (2) [block, right = 2cm of 1]{Amminoacidi};
+    \node (3) [block, right = 2cm of 2]{Acidi grassi};
+    \node (4) [block, below = 1cm of 2]{Acetil-CoA};
+    \node (5) [block, below = 1cm of 4]{Ciclo dei TCA};
+    \node (6) [block, left = 2cm of 5]{Corpi chetonici};
+    \node (7) [block, right = 2cm of 5]{Steroli e acidi grassi};
+
+    \path [line] (1) -- (4);
+    \path [line] (2) -- (4);
+    \path [line] (3) -- (4);
+    \path [reverseline] (5) -- (4);
+    \path [reverseline] (6) -- (4);
+    \path [reverseline] (7) -- (4);
+
+\end{tikzpicture}
+\end{center}
+L'\textbf{acetil-CoA} rappresenta il trasportatore del gruppo acetato usato come substrato energetico del \textbf{ciclo degli acidi tricarbossilici}.\\
+Su questo composto convergono dunque le vie metaboliche di:
+\begin{itemize}
+\item \textbf{\textit{\textbeta}-ossidazione} degli acidi grassi a lunga catena
+\item \textbf{glicolisi} dei carboidrati di riserva o di nuova ingestione
+\item ossidazione dei \textbf{corpi chetonici}
+\item ossidazione dell'\textbf{etanolo}
+\item demolizione di alcuni \textbf{amminoacidi}
+\end{itemize}
 
 \subsection{Sintesi}
 L'acido pantotenico è essenziale per la sintesi dell'omonimo dominio presente in CoA.\\
