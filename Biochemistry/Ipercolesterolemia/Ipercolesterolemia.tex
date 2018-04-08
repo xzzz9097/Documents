@@ -1,0 +1,221 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[italian]{babel}
+\usepackage[version=3]{mhchem}
+\usepackage{textgreek}
+\usepackage{gensymb}
+\usepackage{chemfig}
+\usepackage{tikz}
+\usepackage{fullpage}
+\usetikzlibrary{shapes,arrows, positioning,calc}
+
+\tikzstyle{block} = [rectangle, draw, text centered, minimum height=1.5em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{linewithouttip} = [draw, -]
+\tikzstyle{reverseline} = [draw, latex'-]
+\tikzstyle{thickline} = [draw, -latex', line width = 0.4mm]
+
+\usepackage[utf8]{inputenc}
+
+\makeatletter
+\definearrow5{-n>}{
+	\CF@arrow@shift@nodes{#3}%
+	\expandafter\draw\expandafter[\CF@arrow@current@style,-CF@full](\CF@arrow@start@node)--(\CF@arrow@end@node)node[pos=.2](narrow@arctangent@i){} node[pos=.5](narrow@arctangent@ii){};%
+	\edef\CF@tmp@str{[\ifx\@empty#1\@empty draw=none,\fi-CF@full]}%
+	\expandafter\draw\CF@tmp@str (narrow@arctangent@i)%
+		arc[radius=\CF@compound@sep*\CF@current@arrow@length*\ifx\@empty#4\@empty0.333\else#4\fi,start angle=\CF@arrow@current@angle+90,%
+		delta angle=-\ifx\@empty#5\@empty60\else#5\fi]node(narrow@start){};
+	\edef\CF@tmp@str{[\ifx\@empty#2\@empty draw=none,\fi-CF@full]}%
+	\expandafter\draw\CF@tmp@str (narrow@arctangent@ii)%
+		arc[radius=\CF@compound@sep*\CF@current@arrow@length*\ifx\@empty#4\@empty0.333\else#4\fi,start angle=\CF@arrow@current@angle+90,%
+		delta angle=-\ifx\@empty#5\@empty60\else#5\fi]node(narrow@end){};
+	\edef\CF@tmp@str{\if\string-\expandafter\@car\detokenize{#4.}\@nil+\else-\fi}%
+	\CF@arrow@display@label{#1}{0}\CF@tmp@str{narrow@start}{#2}{1}\CF@tmp@str{narrow@end}%
+}
+\makeatother
+
+\newcommand*\derivesubmol[4]{%
+    \saveexpandmode\saveexploremode\expandarg\exploregroups
+    \csname @\ifcat\relax\noexpand#2first\else second\fi oftwo\endcsname
+        {\expandafter\StrSubstitute\@car#2\@nil}
+        {\expandafter\StrSubstitute\csname CF@@#2\endcsname}
+    {\@empty#3}{\@empty#4}[\temp@]%
+    \csname @\ifcat\relax\noexpand#1first\else second\fi oftwo\endcsname
+        {\expandafter\let\@car#1\@nil}
+        {\expandafter\let\csname CF@@#1\endcsname}\temp@
+    \restoreexpandmode\restoreexploremode
+}
+
+\setcrambond{2pt}{}{}
+
+\definesubmol{adenina}{N*5([::-18]-*6(-N=-N=(-NH_2)-)=-N=-)}
+
+\definesubmol{s1}{-[2]!{adenina}}
+\definesubmol{s2}{-[6,.6]O-PO_3^{2-}}
+\definesubmol{s3}{-[6,.6]OH}
+
+\definesubmol{ribosiofosfatoadenina}{%
+    -[::-90,2]%
+        (%
+            -[::115,1.176]O%
+            -[::-50,1.176]%
+        )%
+    <[::45,0.8]%
+        (%
+          (!{s3})
+          -[::45,,,,line width=2pt,shorten <=-.5pt,shorten >=-.5pt]%
+              (!{s2})%
+          >[::45,0.8]%
+              (!{s1})%
+         )%
+}
+
+\definesubmol{ribosioadenina}{%
+    -[::-90,2]%
+        (%
+            -[::115,1.176]O%
+            -[::-50,1.176]%
+        )%
+    <[::45,0.8]%
+        (%
+          (!{s3})
+          -[::45,,,,line width=2pt,shorten <=-.5pt,shorten >=-.5pt]%
+          >[::45,0.8]%
+              (!{s1})%
+         )%
+}
+
+\def \Pantotenato {
+  \tiny
+  \chemfig{HO-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-OH}
+}
+
+\def \Colesterolo {
+  \chemfig{[::30]HO-*6(--*6(=--*6(-*5(---(-[::-36](-[::+60]) -[::-60]-[::-60]-[::+60]-[::-60](-[::-60])-[::+60])-)-(-[::+0])---)--)-(-[::+0])---)}
+}
+
+\def \CoA {
+\tiny
+\schemestart
+$\underbrace{\chemfig{HS-CH_2-CH_2-NH-}}_{\beta\textnormal{-mercapto-etilammina}}$
+$\underbrace{\chemfig{C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-O}}_{\textnormal{acido pantotenico}}$
+$\underbrace{\chemfig{PO_2^{-}-O-PO_2^{-}-O-CH_2!{ribosiofosfatoadenina}}}_{\textnormal{3'-fosfoadenosina difosfato}}$
+\schemestop
+}
+
+\def \ACP {
+\tiny
+\schemestart
+$\underbrace{\chemfig{HS-CH_2-CH_2-NH-C(=[:90]O)-CH_2-CH_2-NH-C(=[:90]O)-CH(-[:270]OH)-C(-[:90]CH_3)(-[:270]CH_3)-CH_2-O-PO_2^{-}-}}_{\textnormal{4'-fosfopanteteina}}$
+$\underbrace{\chemleft. \chemfig{O-CH_2-CH(-[:90]C(-[:90]...)=O)(-[:270]NH(-[:270]...))}\chemright\}}_{\textnormal{serina}}$
+proteina
+\schemestop
+}
+
+\date{}
+
+\setatomsep{15pt}
+
+\title{%
+  Ipercolesterolemia \\
+  \large Alterazioni del metabolismo del colesterolo
+}
+
+\begin{document}
+
+\begin{titlepage}
+
+\maketitle
+
+\begin{center}{\setatomsep{20pt}\Colesterolo}\end{center}
+
+\tableofcontents
+
+\section{Processo malato}
+L'ipercolesterolemia è una grave patologia metabolica dovuta a difetti del recettore delle \textbf{lipoproteine a bassa densità (LDL)}.
+\subsection{Recettore per le LDL}
+LDLr è una glicoproteina a singola catena dotata di:
+\begin{itemize}
+  \item una sola elica \textbf{transmembrana}
+  \item un'estremità \textbf{C-terminale} citoplasmatica
+  \item un'estremità \textbf{N-terminale} protesa nell'ambiente cellulare
+\end{itemize}
+L'estremità N-terminale presenta i siti di legame per \textbf{apoB-100} e \textbf{apoE-100}, le due apolipoproteine espresse dalle \textbf{LDL} e VLDL che ne mediano il riconoscimento e la \textbf{internalizzazione} da parte delle cellule epatiche e periferiche dotate del recettore.\\
+In particolare, è il \textbf{fegato} a svolgere il catabolismo della maggior parte delle LDL circolanti (75\%).
+\subsection{Difetti}
+La disfunzione che causa l'ipercolesterolemia può interessare vari aspetti della costituzione e attività di LDLr:
+\begin{itemize}
+\item il difetto più frequente è il \textbf{calo del numero} di recettori funzionanti, dovuto a una \textbf{mutazione non-senso} del gene per esso codificante. L'\textbf{ipercolesterolemia familiare} è una patologia autosomica dominante, in quanto l'eterozigote, pur avendo un solo allele mutato, non produce quantità sufficiente di LDLr funzionante per catabolizzare il colesterolo in circolo.
+\item in altri casi la patologia è dovuta a \textbf{mutazioni senso} che producono LDLr con \textbf{difetti nel legame} con le lipoproteine
+\item talvolta il difetto risiede nel \textbf{meccanismo di trasporto} della glicoproteina che, seppur correttamente sintetizzata, non raggiunge la \textbf{membrana cellulare}
+\item infine, mutazioni di LDLr possono compromettere la regione \textbf{C-terminale}, fondamentale per l'\textbf{internalizzazione del complesso LDL-recettore}
+\end{itemize}
+
+\section{Alterazioni metaboliche}
+L'esito del difetto di LDLr è una significativa \textbf{difficoltà nella ricaptazione delle LDL} plasmatiche da parte degli epatociti.\\
+Per questo motivo, tali lipoproteine cariche di colesterolo restano nel sangue invece che venire internalizzate e degradate. Ciò ha fondamentalmente due conseguenze sul metabolismo del colesterolo:
+\begin{itemize}
+\item \textbf{calo della degradazione}
+\item \textbf{aumento della sintesi}
+\end{itemize}
+I due fenomeni concorrono ad \textbf{aumentare il livello di colesterolo plasmatico}.
+
+\subsection{Epatocita}
+La normale internalizzazione delle LDL porta ad aumento della quota di colesterolo intracellulare, che viene in gran parte \textbf{smaltito} grazie alla degradazione ad \textbf{acidi biliari} secreti nella \textbf{bile}.\\
+L'accumulo di colesterolo nel citoplasma ha inoltre l'importante significato di \textbf{prevenire ulteriore sintesi del composto}, mediante inibizione dell'enzima regolatore \textbf{HMG-CoA reduttasi}.
+
+\begin{center}
+\begin{tikzpicture}[node distance = 2cm, auto, trim left = (1), trim right = (1)]
+
+    \node (1) [block]{acetil-CoA + acetoacetil-CoA};
+    \node (2) [block, below of=1]{HMG-CoA};
+    \node (3) [block, below of=2]{acido mevalonico};
+    \node (4) [block, below of=3]{colesterolo};
+    \node (5) [below of=4]{LDL plasmatiche};
+    \node (6) [right of=4, node distance = 5cm]{recettore LDL};
+
+    \path [line] (1) -- (2) node (7) [midway, left, xshift = -2mm] {\textit{HMG-CoA sintasi}};
+    \path [line] (2) -- (3) node (8) [midway, left, xshift = -2mm] {\textit{HMG-CoA reduttasi}};
+    \path [dashed, thickline] (3) -- (4);
+    \path [reverseline] (4) -- (5);
+    \path [dashed, line] (4) --++ (-5,-0) |- (7) node [midway, left] {$\ominus$};
+    \path [dashed, line] (4) --++ (-5,0) |- (8) node [midway, left] {$\ominus$};
+    \path [dashed, line] (4) -- (6) node [very near end]{$\ominus$};
+
+\end{tikzpicture}
+\end{center}
+
+L'inibizione è mediata dagli intermedi \textbf{ossisteroli}, che stimolano la \textbf{proteolisi} di HMG-CoA reduttasi e mantengono presso il reticolo endoplasmico il \textbf{fattore di trascrizione SREBP}.\\
+Nell'ipercolesterolemia \textbf{l'assunzione del colesterolo plasmatico non può avvenire}, e quindi la concentrazione intracellulare rimane bassa.\\
+Di conseguenza, manca l'inibizione di HMG-CoA reduttasi e di SREBP, il quale migra nel nucleo \textbf{attivando la trascrizione della reduttasi stessa} e di altri enzimi correlati alla sintesi di colesterolo.\\
+In sintesi, dato il \textbf{mancato equilibrarsi del colesterolo intracellulare con quello plasmatico}, gli epatociti \textbf{continuano a sintetizzarlo} anche in presenza di eccesso nel sangue.
+
+
+\subsection{Sangue}
+
+\section{Terapia}
+
+\begin{thebibliography}{2}
+
+\bibitem{lehninger}
+  David L. Nelson, Michael M. Cox,
+  \textit{Lehninger principles of biochemistry},
+  Freeman, W. H. & Company,
+  6\textsuperscript{th} edition,
+  2012.
+\bibitem{devlin}
+  Thomas M. Devlin,
+  \textit{Biochimica con aspetti chimico-farmaceutici},
+  EdiSES,
+  7\textsuperscript{a} edizione,
+  2011.
+\bibitem{Bertoni}
+  Alessandra Bertoni,
+  \textit{Corso di Biochimica II},
+  CdLM in Medicina e Chirurgia,
+  Università del Piemonte Orientale,
+  Anno accademico 2017-2018.
+
+\end{thebibliography}
+
+\end{document}
