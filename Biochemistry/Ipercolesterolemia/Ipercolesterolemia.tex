@@ -95,7 +95,11 @@
 }
 
 \def \Statina {
-  \chemfig{[:-30]-[::60]-(-[::-60])(-[::+120]R_1)-[::+60](=[::+60]O)-[::-60]O-[::-60]*6(---=*6(-=--*6(-*6(--*6(-----)))-)--)}
+  \chemname{\chemfig{[:-30]-[::60]-(-[::-60])(-[::+120]R_1)-[::+60](=[::+60]O)-[::-60]O-[::-60]*6(--(-R_2)-=*6(-=-(-)-*6(-*6(--*6(-OH)(-[::+60]-[::-60](-[::+60]HO)(-[::-60]-[::-60]COO^{-}))))-)--)}}{Statina}
+}
+
+\def \Mevalonato {
+  \chemname{\chemfig{[:-180]OH*6(--(-H_{2}C)(-[:-150]HO)---COO^{-})}}{Mevalonato}
 }
 
 \def \CoA {
@@ -230,7 +234,17 @@ Inoltre è consigliato che circa \textbf{due terzi} dell'apporto di grassi sia d
 \item \textbf{assunzione delle LDL} da parte del fegato
 \item \textbf{escrezione fecale} di colesterolo
 \end{itemize}
-Le \textbf{statine} sono una classe di agenti \textbf{inibitori competitivi di HMG-CoA reduttasi}, e quindi della sintesi endogena di colesterolo. Sono particolarmente efficaci, perettendo la riduzione fino a \textbf{40-50\%} di colesterolo LDL. La bassa concentrazione di colesterolo generato nell'epatocita favorisce la \textbf{riespressione del recettore per le LDL}, e quindi l'aumento della loro ricaptazione che riduce la colesterolemia.\\
+Le \textbf{statine} sono una classe di agenti \textbf{inibitori competitivi di HMG-CoA reduttasi}, grazie alla loro somiglianza al mevalonato, e quindi della sintesi endogena di colesterolo. Sono particolarmente efficaci, permettendo la riduzione fino a \textbf{40-50\%} di colesterolo LDL.\\
+
+\begin{center}
+\setatomsep{20pt}
+\schemestart
+\Statina
+\Mevalonato
+\schemestop
+\end{center}
+
+La bassa concentrazione di colesterolo generato nell'epatocita favorisce la \textbf{riespressione del recettore per le LDL}, e quindi l'aumento della loro ricaptazione che riduce la colesterolemia.\\
 Nuove strategie sono mirate all'\textbf{inibizione dell'assunzione intestinale} del composto, mediante inibitori del trasportatore \textbf{NPC1L1}, e alla \textbf{rimozione della modulazione negativa di LDLr} attuata da \textbf{PCSK9}.\\
 Per i casi di ipercolesterolemia a base genetica sono in studio \textbf{vettori del gene corretto del recettore} delle LDL.
 
