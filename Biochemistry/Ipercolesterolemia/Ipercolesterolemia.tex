@@ -94,6 +94,10 @@
   \chemfig{[::30]HO-*6(--*6(=--*6(-*5(---(-[::-36](-[::+60]) -[::-60]-[::-60]-[::+60]-[::-60](-[::-60])-[::+60])-)-(-[::+0])---)--)-(-[::+0])---)}
 }
 
+\def \Statina {
+  \chemfig{[:-30]-[::60]-(-[::-60])(-[::+120]R_1)-[::+60](=[::+60]O)-[::-60]O-[::-60]*6(---=*6(-=--*6(-*6(--*6(-----)))-)--)}
+}
+
 \def \CoA {
 \tiny
 \schemestart
@@ -132,7 +136,14 @@ proteina
 \tableofcontents
 
 \section{Processo malato}
-L'\textit{ipercolesterolemia familiare} è una patologia metabolica dovuta a difetti del recettore delle \textbf{lipoproteine a bassa densità (LDL)}.
+L'\textit{ipercolesterolemia} è genericamente definita come un \textbf{eccesso di colesterolo} nel sangue, in particolare di quello trasportato dalle \textbf{lipoproteine a bassa densità (LDL)}.\\
+Le cause principali di tale incremento sono:
+\begin{itemize}
+\item \textbf{aumento della produzione epatica di VLDL}, lipoproteine precursori delle LDL plasmatiche che trasportano i \textbf{trigliceridi}, anch'essi elevati, e il colesterolo endogeni \textbf{verso i tessuti}
+\item \textbf{insufficiente ricaptazione delle LDL} per deficit di LDLr o delle apolipoproteine
+\end{itemize}
+La forma più frequente (85\% dei casi) di ipercolesterolemia è quella \textit{multifattoriale}, indotta dalla coesistenza di \textbf{fattori ambientali}, quali dieta iperlipidica e sedentarietà, e di \textbf{fattori genetici predisponenti} che riducono l'efficacia dei sistemi di \textbf{controllo metabolico dei lipidi}.\\
+La forma \textit{familiare} è invece una patologia propriamente genetica, dovuta a difetti del \textbf{gene per LDLr}.
 \subsection{Recettore per le LDL}
 LDLr è una glicoproteina a singola catena dotata di:
 \begin{itemize}
@@ -143,9 +154,9 @@ LDLr è una glicoproteina a singola catena dotata di:
 L'estremità N-terminale presenta i siti di legame per \textbf{apoB-100} e \textbf{apoE-100}, le due apolipoproteine espresse dalle \textbf{LDL} e VLDL che ne mediano il riconoscimento e la \textbf{internalizzazione} da parte delle cellule epatiche e periferiche dotate del recettore.\\
 In particolare, è il \textbf{fegato} a svolgere il catabolismo della maggior parte delle LDL circolanti (75\%).
 \subsection{Difetti}
-La disfunzione che causa l'ipercolesterolemia può interessare vari aspetti della costituzione e attività di LDLr:
+Vari meccanismi agiscono come fattori predisponenti dell'ipercolesterolemia mediante \textbf{riduzione dell'azione di LDLr}:
 \begin{itemize}
-\item il difetto più frequente è il \textbf{calo del numero} di recettori funzionanti, dovuto a una \textbf{mutazione non-senso} del gene per esso codificante. L'\textbf{ipercolesterolemia familiare} è una patologia autosomica dominante, in quanto l'eterozigote, pur avendo un solo allele mutato, non produce quantità sufficiente di LDLr funzionante per catabolizzare il colesterolo in circolo.
+\item il difetto più frequente è il \textbf{calo del numero} di recettori funzionanti esposti. Nel quadro più comune, esso è dovuto al \textit{feedback negativo} sulla \textbf{sintesi di LDLr} dato dall'abbondante colesterolo già presente all'interno dell'epatocita.\\ L'\textbf{ipercolesterolemia familiare} è una patologia autosomica dominante dovuta a \textbf{mutazione non-senso} del gene per esso codificante. L'eterozigote, pur avendo un solo allele mutato, non produce quantità sufficiente di LDLr funzionante per catabolizzare il colesterolo in circolo.
 \item in altri casi la patologia è dovuta a \textbf{mutazioni senso} che producono LDLr con \textbf{difetti nel legame} con le lipoproteine
 \item talvolta il difetto risiede nel \textbf{meccanismo di trasporto} della glicoproteina che, seppur correttamente sintetizzata, non raggiunge la \textbf{membrana cellulare}
 \item infine, mutazioni di LDLr possono compromettere la regione \textbf{C-terminale}, fondamentale per l'\textbf{internalizzazione del complesso LDL-recettore}
@@ -153,7 +164,7 @@ La disfunzione che causa l'ipercolesterolemia può interessare vari aspetti dell
 
 \section{Alterazioni metaboliche}
 L'esito del difetto di LDLr è una significativa \textbf{difficoltà nella ricaptazione delle LDL} plasmatiche da parte degli epatociti.\\
-Per questo motivo, tali lipoproteine cariche di colesterolo restano nel sangue invece che venire internalizzate e degradate. Ciò ha fondamentalmente due conseguenze sul metabolismo del colesterolo:
+Per questo motivo, tali lipoproteine cariche di colesterolo \textbf{restano nel sangue} invece che venire internalizzate e degradate. Ciò ha fondamentalmente due conseguenze sul metabolismo del colesterolo:
 \begin{itemize}
 \item \textbf{calo della degradazione}
 \item \textbf{aumento della sintesi}
@@ -186,7 +197,8 @@ L'accumulo di colesterolo nel citoplasma ha inoltre l'importante significato di 
 \end{center}
 
 L'inibizione è mediata dagli intermedi \textbf{ossisteroli}, che stimolano la \textbf{proteolisi} di HMG-CoA reduttasi e mantengono presso il reticolo endoplasmico il \textbf{fattore di trascrizione SREBP}.\\
-Nell'ipercolesterolemia \textbf{l'assunzione del colesterolo plasmatico non può avvenire}, e quindi la concentrazione intracellulare rimane bassa.\\
+Durante le \textbf{fasi iniziali} della patologia, fattori come l'elevato introito dietetico di steroli mediano \textbf{retroattivamente} la \textbf{riduzione del numero} di recettori per LDL.\\
+Nell'ipercolesterolemia conclamata \textbf{l'assunzione del colesterolo plasmatico è fortemente compromessa} per il calo di LDLr, e quindi la concentrazione intracellulare rimane bassa.\\
 Di conseguenza, manca l'inibizione di HMG-CoA reduttasi e di SREBP, il quale migra nel nucleo \textbf{attivando la trascrizione della reduttasi stessa} e di altri enzimi correlati alla sintesi di colesterolo.\\
 In sintesi, dato il \textbf{mancato equilibrarsi del colesterolo intracellulare con quello plasmatico}, gli epatociti \textbf{continuano a sintetizzarlo} anche in presenza di eccesso nel sangue.
 
@@ -212,12 +224,13 @@ L'introduzione giornaliera di \textbf{non più di 300 mg} di colesterolo, unita 
 Inoltre è consigliato che circa \textbf{due terzi} dell'apporto di grassi sia dato da lipidi \textbf{mono- o polinsaturi}.
 
 \subsection{Farmacologica}
+
 \textbf{Colestiramina} e \textbf{colestipolo} sono due farmaci che sequestrano i \textbf{sali biliari}, promuovendone l'escrezione e quindi la \textbf{risintesi epatica}. Si ottiene quindi un aumento di:
 \begin{itemize}
 \item \textbf{assunzione delle LDL} da parte del fegato
 \item \textbf{escrezione fecale} di colesterolo
 \end{itemize}
-Le \textbf{statine} sono una classe di agenti \textbf{inibitori di HMG-CoA reduttasi}, e quindi della sintesi endogena di colesterolo.\\
+Le \textbf{statine} sono una classe di agenti \textbf{inibitori competitivi di HMG-CoA reduttasi}, e quindi della sintesi endogena di colesterolo. Sono particolarmente efficaci, perettendo la riduzione fino a \textbf{40-50\%} di colesterolo LDL. La bassa concentrazione di colesterolo generato nell'epatocita favorisce la \textbf{riespressione del recettore per le LDL}, e quindi l'aumento della loro ricaptazione che riduce la colesterolemia.\\
 Nuove strategie sono mirate all'\textbf{inibizione dell'assunzione intestinale} del composto, mediante inibitori del trasportatore \textbf{NPC1L1}, e alla \textbf{rimozione della modulazione negativa di LDLr} attuata da \textbf{PCSK9}.\\
 Per i casi di ipercolesterolemia a base genetica sono in studio \textbf{vettori del gene corretto del recettore} delle LDL.
 
